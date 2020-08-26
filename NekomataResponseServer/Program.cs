@@ -17,6 +17,20 @@ namespace NekomataResponseServer {
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+                .ConfigureWebHostDefaults(webBuilder => {
+                    IConfigurationRoot configuration = new ConfigurationBuilder()
+                        .AddCommandLine(args)
+                        .Build();
+
+                    string hosturl = configuration["hosturl"];
+
+                    if (string.IsNullOrEmpty(hosturl)) {
+                        hosturl = "http://0.0.0.0:5000";
+                    }
+
+                    webBuilder.UseUrls(hosturl);
+                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseConfiguration(configuration);
+                });
     }
 }
