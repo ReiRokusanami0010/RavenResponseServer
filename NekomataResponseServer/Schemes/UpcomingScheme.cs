@@ -4,8 +4,8 @@ using Newtonsoft.Json;
 
 namespace NekomataResponseServer.Schemes {
     public partial class UpcomingScheme {
-        [JsonProperty("ObjectId")]
-        public ObjectId _id { get; set; }
+        [JsonProperty("UniqueId")]
+        public string _id { get; set; }
         [JsonProperty("VideoTitle")]
         public string Title { get; set; }
         [JsonProperty("VideoDescription")]
