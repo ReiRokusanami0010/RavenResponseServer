@@ -13,6 +13,10 @@ namespace NekomataResponseServer.Services {
                         case "--pass":
                             Settings.Pass = targetArgs[++i];
                             break;
+                        
+                        case "--islocal":
+                            Settings.IsLocal = true;
+                            break;
                     }
                 }
             } catch (ArgumentException e) {

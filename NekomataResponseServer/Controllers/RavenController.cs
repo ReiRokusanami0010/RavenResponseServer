@@ -9,7 +9,7 @@ namespace NekomataResponseServer.Controllers {
     [Route("api/Raven")]
     [ApiController]
     public class RavenController : Controller {
-        private static MongoClient _mongoClient = new MongoClient($"mongodb://{Settings.User}:{Settings.Pass}@{Settings.AWS}");
+        private static MongoClient _mongoClient = new MongoClient($"mongodb://{Settings.User}:{Settings.Pass}@{Settings.ServerUrl}");
         
         [HttpGet("hololive/{channelName}")]
         public ActionResult<List<UpcomingScheme>> GetAllHololiveColl(string channelName) {
