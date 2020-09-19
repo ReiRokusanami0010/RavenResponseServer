@@ -23,5 +23,18 @@ namespace NekomataResponseServer.Controllers {
         public ActionResult<List<UpcomingScheme>> GetAllAnimareColl(string channelName) {
             return DataBaseService.GetDocuments(_mongoClient, "animare", channelName);
         }
+
+        [HttpGet("collections/{databaseName}")]
+        public ActionResult<List<string>> GetAllCollectionNames(string databaseName) {
+            return DataBaseService.GetCollectionNames(_mongoClient, databaseName);
+        }
+#if DEBUG
+        [HttpGet("debug/{testMsg}/{deviceName}")]
+        public ActionResult<string> GetSocketDevice(string testMsg, string deviceName) {
+            return deviceName == null 
+                ? "Undefined DeviceName"
+                : $"TestMsg : {testMsg}" + "\n" + $"Device : {deviceName}";
+        }
+#endif
     }
 }

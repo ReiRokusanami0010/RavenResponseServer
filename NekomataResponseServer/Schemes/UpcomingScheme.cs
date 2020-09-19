@@ -10,6 +10,8 @@ namespace NekomataResponseServer.Schemes {
         public string Title { get; set; }
         [JsonProperty("VideoDescription")]
         public string Description { get; set; }
+        [JsonProperty("VideoId")]
+        public string VideoId { get; set; }
         [JsonProperty("ChannelId")]
         public string ChannelId { get; set; }
         [JsonProperty("ChannelName")]
